@@ -1,3 +1,6 @@
+#ifndef _PBLPMM_H_
+#define _PBLPMM_H_
+
 void createPPM(const char* path, const int width, const int height, const unsigned char* data)
 {
 	FILE* f;
@@ -39,4 +42,6 @@ void createPPM(const char* path, const int width, const int height, const unsign
 
 	fclose(f);
 }
+
+#endif
 
