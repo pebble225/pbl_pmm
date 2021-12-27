@@ -15,7 +15,7 @@ void createPPM(const char* path, const int width, const int height, const unsign
 	sprintf(width_str, "%d", width);
 	sprintf(height_str, "%d", height);
 
-	int data_length = width*height;
+	uint64_t data_length = (uint64_t)width*(uint64_t)height*(uint64_t)3;
 
 	f = fopen(path, "wb");
 
@@ -38,7 +38,18 @@ void createPPM(const char* path, const int width, const int height, const unsign
 
 	fwrite(&lineBreak, sizeof(char), 1, f);
 
-	fwrite(data, sizeof(unsigned char) * 3, data_length, f);
+	//fwrite(data, sizeof(unsigned char) * 3, data_length, f);
+
+	uint64_t counter = 0;
+
+	for (uint64_t i = 0; i < data_length; i++)
+	{
+		uint8_t byte = data[i];
+
+		fwrite(&byte, sizeof(unsigned char), 1, f);
+
+		counter++;
+	}
 
 	fclose(f);
 }
