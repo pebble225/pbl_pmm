@@ -38,8 +38,6 @@ void createPPM(const char* path, const int width, const int height, const unsign
 
 	fwrite(&lineBreak, sizeof(char), 1, f);
 
-	//fwrite(data, sizeof(unsigned char) * 3, data_length, f);
-
 	uint64_t counter = 0;
 
 	for (uint64_t i = 0; i < data_length; i++)
